@@ -1,16 +1,24 @@
 import localFont from "next/font/local";
-import "./globals.css";
+import {Outfit} from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import "./globals.css";
+//import { ClerkProvider } from "@clerk/nextjs/dist/types/components.server";
+//import { ClerkProvider } from "@clerk/clerk-react";
+ import { ClerkProvider } from "@clerk/nextjs";
+
+const outfit = Outfit({subsets: ["latin"]});
+
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -18,13 +26,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Fetch the Clerk publishable key from the environment variables
+  
+
+  
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+        <html lang="en">
+        <body
+          className={outfit.className}
+        >
+          <ClerkProvider>
+          {children}
+          </ClerkProvider>
+        </body>
+      </html>
   );
 }
