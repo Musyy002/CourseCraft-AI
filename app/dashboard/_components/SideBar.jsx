@@ -2,16 +2,19 @@
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react'
+import React, { useContext } from 'react'
 import { HiOutlineHome } from "react-icons/hi2";
 import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { HiOutlineShieldCheck } from "react-icons/hi2";
 import { HiOutlinePower } from "react-icons/hi2";
 import { Progress } from "@/components/ui/progress"
+import UserCourseList from './UserCourseList';
+import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
 
 
 
 function SideBar() {
+    const {userCourseList,setUserCourseList} = useContext(UserCourseListContext)
     const menu = [
         {
             id:1,
@@ -72,8 +75,8 @@ function SideBar() {
         </ul>
 
         <div className='absolute bottom-10 w-[80%]'> 
-            <Progress value={33}/>
-            <h2 className='text-sm my-2'>3 Out of 5 courses created</h2>
+            <Progress value={(userCourseList?.length/5)*100}/>
+            <h2 className='text-sm my-2'>{userCourseList?.length} Out of 5 courses created</h2>
             <h2 className='text-xs text-gray-500'>Upgrade your plan for unlimited course generation</h2>
         </div>
 

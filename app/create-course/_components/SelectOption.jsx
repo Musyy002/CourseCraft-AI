@@ -36,7 +36,7 @@ function SelectOption() {
                     <SelectTrigger className="">
                         <SelectValue placeholder="Select" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className='bg-white'>
                         <SelectItem value="Beginner">Beginner</SelectItem>
                         <SelectItem value="Intermediate">Intermediate</SelectItem>
                         <SelectItem value="Advance">Advance</SelectItem>
@@ -51,7 +51,7 @@ function SelectOption() {
                     <SelectTrigger className="">
                         <SelectValue placeholder="Select" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className='bg-white'>
                         <SelectItem value="1 Hour">1 Hour</SelectItem>
                         <SelectItem value="2 Hours">2 Hours</SelectItem>
                         <SelectItem value="More than 3 Hours">More than 3 Hours</SelectItem>
@@ -66,7 +66,7 @@ function SelectOption() {
                     <SelectTrigger className="">
                         <SelectValue placeholder="Select" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className='bg-white'>
                         <SelectItem value="Yes">Yes</SelectItem>
                         <SelectItem value="No">No</SelectItem>
                     </SelectContent>

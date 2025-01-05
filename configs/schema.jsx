@@ -1,4 +1,4 @@
-import { json, pgTable, serial, varchar } from "drizzle-orm/pg-core";
+import { integer, json, pgTable, serial, varchar, boolean } from "drizzle-orm/pg-core";
 
 export const CourseList = pgTable('courseList',{
     id:serial('id').primaryKey(),
@@ -10,5 +10,15 @@ export const CourseList = pgTable('courseList',{
     courseOutput:json('courseOutput').notNull(),
     createdBy:varchar('createdBy').notNull(),
     userName:varchar('username'),
-    userProfileImage:varchar('userProfileImage')
+    userProfileImage:varchar('userProfileImage'),
+    publish:boolean('publish').default(false)
 })
+
+export const Chapters = pgTable('chapters', {
+    id: serial('id').primaryKey(),
+    courseId: varchar('courseId').notNull(),
+    chapterId: integer('chapterId').notNull(), // This is causing the issue
+    content: json('content').notNull(),
+    videoId: varchar('videoId').notNull(),
+  });
+  

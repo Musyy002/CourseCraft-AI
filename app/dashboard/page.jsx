@@ -2,6 +2,7 @@
 
 import { RedirectToSignIn, useAuth, UserButton } from "@clerk/nextjs";
 import AddCourse from "./_components/AddCourse";
+import UserCourseList from "./_components/UserCourseList";
 
 export default function Dashboard() {
   const { isLoaded, isSignedIn } = useAuth();
@@ -17,6 +18,13 @@ export default function Dashboard() {
   }
 
   // Render the dashboard content if authenticated
-  return ( <AddCourse/> )
+  return ( 
+    <div>
+      <AddCourse/> 
+      
+      {/* List of courses */}
+      <UserCourseList/>
+    </div>
+)
   
 }

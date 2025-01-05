@@ -2,8 +2,9 @@ import { Item } from '@radix-ui/react-select'
 import { index } from 'drizzle-orm/mysql-core'
 import { HiOutlineClock, HiOutlineCheckCircle } from "react-icons/hi2";
 import React from 'react'
+import EditChapters from './EditChapters';
 
-function ChapterList({course}) {
+function ChapterList({course,refreshData,edit=true}) {
   return (
     <div className='mt-3'>
         <h2 className='font-medium text-lg'>Chapters</h2>
@@ -13,7 +14,8 @@ function ChapterList({course}) {
                 <div className='flex mt-3 gap-5 items-center'>
                     <h2 className='bg-primary flex-none h-10 w-10 text-white rounded-2xl text-center p-2'>{index+1}</h2>
                     <div>
-                        <h2 className='font-medium text-lg'>{chapter?.ChapterName}</h2>
+                        <h2 className='font-medium text-lg'>{chapter?.ChapterName}
+                            {edit&& <EditChapters course={course} index={index}/> } </h2>
                         <p className='text-sm text-gray-500'>{chapter?.About}</p>
                         <p className='flex gap-2 text-primary items-center'> <HiOutlineClock /> {chapter?.Duration}</p>
                     </div>
