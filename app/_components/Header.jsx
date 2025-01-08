@@ -13,7 +13,9 @@ function Header() {
             className="mx-auto lg:mx-0 w-32 sm:w-40 mb-26"/>
       </Link>
 
-        <Button className='text-white'>Get Started</Button>
+      <Link href="/dashboard">
+        <Button className='text-white bg-purple-700'>Get Started</Button>
+      </Link>
     </div>
   )
 }

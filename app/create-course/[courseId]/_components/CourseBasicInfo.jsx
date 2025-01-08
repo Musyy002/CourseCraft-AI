@@ -8,16 +8,18 @@ import Link from 'next/link';
 
 function CourseBasicInfo({course,refreshData,edit=true}) {
 
-  const [selectedFile,setSelectedFile] = useState();
+  const [imageUrl, setImageUrl] = useState('');
 
-  const onFileSelected=(event)=>{
+  const onFileSelected = (event) => {
     const file = event.target.files[0];
-    setSelectedFile(URL.createObjectURL(file));
+    if (!file) return;
 
-    const fileName = Date.now()+'.jpg'
-    const storageRef = ref(storage,file)
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImageUrl(e.target.result); // Set the image URL to display
+    };
+    reader.readAsDataURL(file);
   }
-
   return (
     <div className='p-10 border rounded-xl shadow-sm mt-5'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
@@ -33,7 +35,7 @@ function CourseBasicInfo({course,refreshData,edit=true}) {
 
             <div>
               <label htmlFor="upload-image">
-                <Image src={selectedFile?selectedFile:'/placeholder.png'} width={300} height={300} alt='none' className='pl-50 w-full h-[250px] rounded-xl object-contain cursor-pointer'/>
+                <Image src={imageUrl?imageUrl:'/placeholder.png'} width={300} height={300} alt='none' className='pl-50 w-full h-[250px] rounded-xl object-contain cursor-pointer'/>
               </label>
               {edit&& <input type="file" name="" id="upload-image" className='opacity-0' onChange={onFileSelected}/> }
             </div>
