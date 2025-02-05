@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 import ReactMarkdown from 'react-markdown'
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Dashboard from "@/app/dashboard/page";
 
 const opts = {
   height: "390",
@@ -11,7 +14,7 @@ const opts = {
   },
 };
 
-function ChapterContent({ chapter, content }) {
+function ChapterContent({ chapter, content, onNext, onFinish, isLastChapter }) {
   
 
   // If content is still loading or not available
@@ -50,6 +53,19 @@ function ChapterContent({ chapter, content }) {
           ))
 
         }
+      </div>
+
+      {/* Add Next/Finish Button */}
+      <div className="mt-8">
+          {isLastChapter ? (
+            <Button onClick={onFinish} className="bg-green-500 hover:bg-green-600 text-white">
+              Finish
+            </Button>
+          ) : (
+            <Button onClick={onNext} className="bg-blue-500 hover:bg-blue-600 text-white">
+              Next
+            </Button>
+          )}
       </div>
     </div>
   );
